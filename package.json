@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/mkuerbis/bcscanner/issues"
   },
-  "homepage": "https://github.com/mkuerbis/bcscanner#readme"
+  "homepage": "https://github.com/mkuerbis/bcscanner#readme",
+  "dependencies": {
+    "jquery": "^2.2.4"
+  }
 }
