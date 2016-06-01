@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>bcscanner</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="bcscanner.js"></script>
+</head>
+
+<body>
+    <input type="text" id="bcscanner" placeholder="Scanner" />
+    <br/>
+    <input type="text" id="foo" placeholder="non Scanner" />
+    <br/>
+    <button id="start">start</button>
+    <br/>
+    <button id="stop">stop</button>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var scanner = $('#bcscanner').bcscanner({
+                hidden: true,
+                onChar: [{
+                    charCode: 13,
+                    func: function() {
+                        alert("enter was hit");
+                    }
+                }, {
+                    charCode: 32,
+                    func: function() {
+                        alert("space was hit");
+                    }
+                }]
+            });
+
+            $('#start').click(function() {
+                scanner.start();
+            });
+
+            $('#stop').click(function() {
+                scanner.stop();
+            });
+
+        });
+    </script>
+</body>
+
+</html>
