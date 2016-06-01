@@ -12,10 +12,6 @@
             }]
         }, options);
 
-        if ($('#bcscannerstyle').length == 0) {
-            $("<style id='bcscannerstyle' type='text/css'>\n.bcscanner-started{border: 2px solid green;}\n.bcscanner-stopped{border: 2px solid red;}\n.bcscanner-hidden{ position: absolute; top: -999999px;}</style>").appendTo("head");
-        }
-
         if (settings.hidden) {
             $input.addClass("bcscanner-hidden");
         }

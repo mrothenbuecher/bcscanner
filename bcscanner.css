@@ -1,0 +1,10 @@
+.bcscanner-started {
+    border: 2px solid green;
+}
+.bcscanner-stopped {
+    border: 2px solid red;
+}
+.bcscanner-hidden {
+    position: absolute;
+    top: -999999px;
+}

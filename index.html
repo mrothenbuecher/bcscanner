@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>bcscanner</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="bcscanner.css">
     <script src="bcscanner.js"></script>
 </head>
 
@@ -19,7 +20,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var scanner = $('#bcscanner').bcscanner({
-                hidden: true,
+                hidden: false,
                 onChar: [{
                     charCode: 13,
                     func: function() {
