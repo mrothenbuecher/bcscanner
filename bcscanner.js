@@ -12,22 +12,35 @@
             }]
         }, options);
 
-        if (settings.hidden) {
-            if (!$('#bcscannerstyle')) {
-                $("<style id='bcscannerstyle' type='text/css'> .bcscanner{ position: absolute; top: -999999px;} </style>").appendTo("head");
-            }
-            $input.addClass("bcscanner");
+        if ($('#bcscannerstyle').length == 0) {
+            $("<style id='bcscannerstyle' type='text/css'>\n.bcscanner-started{border: 2px solid green;}\n.bcscanner-stopped{border: 2px solid red;}\n.bcscanner-hidden{ position: absolute; top: -999999px;}</style>").appendTo("head");
         }
 
-        this.start = function() {
+        if (settings.hidden) {
+            $input.addClass("bcscanner-hidden");
+        }
+
+        $input.addClass("bcscanner");
+
+        this.start = function(interval) {
+            if (interval) {
+                settings.interval = interval;
+            } else {
+                if (!settings.interval || settings.interval <= 0) {
+                    settings.interval = 50;
+                }
+            }
+
             if (!$input.data("intervalID")) {
                 var intervalID = setInterval(function() {
                     $input.focus();
                 }, settings.interval);
                 $input.data("intervalID", intervalID);
+                $input.addClass('bcscanner-started');
             } else {
                 console.error("scanner already running on this field");
             }
+            $input.removeClass('bcscanner-stopped');
         };
 
         this.stop = function() {
@@ -35,19 +48,24 @@
                 clearInterval($input.data("intervalID"));
                 $input.data("intervalID", "");
             }
+            $input.removeClass('bcscanner-started');
+            $input.addClass('bcscanner-stopped');
         };
 
         this.destroy = function() {
             $input.stop();
             $input.unbind('keypress');
             $input.removeClass("bcscanner");
+            $input.removeClass("bcscanner-hidden");
             if (!$(body).find('.bcscanner')) {
                 $('#bcscannerstyle').remove();
             }
         };
 
-        if (settings.interval > 0) {
+        if (settings.interval && settings.interval > 0) {
             this.start();
+        } else {
+            this.stop();
         }
 
         if (settings.onChar && settings.onChar.length > 0) {
