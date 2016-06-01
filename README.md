@@ -40,7 +40,7 @@ default is 50
 
 ### onChar (array of objects)
 Defines functions depending of a charCode
-```
+```js
 {
   charCode: 13,
   func: function(input, event) {
@@ -53,7 +53,10 @@ Defines functions depending of a charCode
 ## methods
 
 ### start([interval])
+starts the focus requesting interval
 
 ### stop()
+stops the focus requesting interval
 
 ### destroy()
+removes bcscanner
