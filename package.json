@@ -1,6 +1,5 @@
 {
   "name": "bcscanner",
-  "version": "1.0.0",
   "description": "jquery plugin for hid barcode scanner",
   "main": "bcscanner.js",
   "scripts": {
@@ -11,7 +10,12 @@
     "url": "git+https://github.com/mkuerbis/bcscanner.git"
   },
   "keywords": [
-    "jquery-plugin"
+    "jquery-plugin",
+    "HID",
+    "barcode",
+    "scanner",
+    "barcode scanner",
+    "input"
   ],
   "author": "Michael Kürbis",
   "license": "ISC",
